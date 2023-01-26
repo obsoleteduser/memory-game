@@ -11,15 +11,13 @@
 .color-container{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(auto-fill, 8, 1fr);
     column-gap: 1rem;
     row-gap: 1rem;
     background-color: white;
     padding: 1rem;
     border-radius: 10px;
-    /* width: 60rem;
-    max-height: 20rem; */
-    height: auto;
+    flex-wrap: wrap;
     align-items: center;
     justify-items: center;
     align-content: center;
@@ -28,5 +26,6 @@
 
 .color{
     width: 20rem;
-    height: 10rem;
+    height: 4rem;
+    flex-basis: auto;
 }
