@@ -10,6 +10,7 @@ function App() {
 
   generateColors()
   console.log(colors)
+  
 
  }, [])
 
@@ -41,7 +42,13 @@ function App() {
     <div className="App">
       
       <div className="color-container">
-        
+
+        {
+          colors.map((color, index) => (
+            <div className="color" key={index} color={color} style={{backgroundColor: `#${color}`}}></div>
+          ))
+        }
+
       </div>
 
     </div>
