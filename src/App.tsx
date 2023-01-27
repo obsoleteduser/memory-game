@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect, useRef, useState } from 'react'
 import './App.css'
 
 interface ICompare {
-  color: string,
+  color: string | null,
   active: boolean
 }
 
@@ -10,7 +10,7 @@ interface ICompare {
 function App() {
 
   const [colors, setColors] = useState<string[]>([])
-  const [colorActive, setColorActive] = useState<string[]>([])
+  const [colorActive, setColorActive] = useState<Array<string | null>>([])
   const [compare, setCompare] = useState<ICompare[]>([])
   console.log(colorActive)
 
@@ -18,7 +18,7 @@ function App() {
 
     setColors([])
     generateColors()
-    console.log(colors)
+
 
 
   }, [])
@@ -46,7 +46,7 @@ function App() {
 
 
 
-  const getColor = async (event: React.MouseEvent<HTMLElement>) => {
+  const getColor = (event: any) => {
 
     console.log(event.currentTarget.getAttribute('color'))
     setCompare([...compare, {color: event?.currentTarget?.getAttribute('color'), active: true }])
@@ -57,7 +57,9 @@ function App() {
     setColorActive([...colorActive, compare[0].color])
     setCompare([])
   }
-  
+  else if(compare.length>2){
+    setCompare([])
+  }
 
   return (
     <div className="App">
