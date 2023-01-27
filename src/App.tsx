@@ -1,13 +1,22 @@
-import { useEffect, useState } from 'react'
+import { FC, ReactElement, useEffect, useRef, useState } from 'react'
 import './App.css'
 
-function App() {
+interface ICompare{
+  color: string,
+  active: boolean
+}
+
+
+function App(){
  
  const [colors, setColors] = useState<string[]>([])
-
+ const [colorActive, setColorActive] = useState<string[]>([])
+ const [compare, setCompare] = useState<ICompare[]>([])
+ console.log(colorActive)
 
  useEffect(()=>{
 
+  setColors([])
   generateColors()
   console.log(colors)
   
@@ -37,6 +46,14 @@ function App() {
 
 
 
+const getColor = async (event: any) =>{
+  
+  event.stopPropagation()
+  console.log(event.currentTarget.getAttribute('color'))
+  setColorActive([...colorActive, event?.currentTarget?.getAttribute('color')!])
+ 
+}
+
 
   return (
     <div className="App">
@@ -45,7 +62,7 @@ function App() {
 
         {
           colors.map((color, index) => (
-            <div className="color" key={index} color={color} style={{backgroundColor: `#${color}`}}></div>
+            <div onClick={getColor} className="color" key={index} color={`#${color}`} style={colorActive? {backgroundColor: `#${color}`}: {backgroundColor: 'black'}}></div>
           ))
         }
 
