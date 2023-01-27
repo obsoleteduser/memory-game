@@ -2,7 +2,7 @@ import React, { FC, ReactElement, useEffect, useRef, useState } from 'react'
 import './App.css'
 
 interface ICompare {
-  color: string | null,
+  color: string,
   active: boolean
 }
 
@@ -10,7 +10,7 @@ interface ICompare {
 function App() {
 
   const [colors, setColors] = useState<string[]>([])
-  const [colorActive, setColorActive] = useState<Array<string | null>>([])
+  const [colorActive, setColorActive] = useState<Array<string>>([])
   const [compare, setCompare] = useState<ICompare[]>([])
   console.log(colorActive)
 
