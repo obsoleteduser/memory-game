@@ -26,7 +26,7 @@ function App() {
   function generateColors(): void {
 
     for (let i = 0; i < 4; i++) {
-      setColors(prev => [...prev, Math.floor((Math.random() * 16777215)).toString(16)])
+      setColors(prev => [...prev, (~~(Math.random() * 16777215)).toString(16)])
     }
 
     setColors(prev => [...prev, ...prev])
